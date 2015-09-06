@@ -1,10 +1,6 @@
-![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
-
 # TravelBike-sails
 
-# Screenshots
-
-![Sails Auth Login Screen](/screenshot/screenshot-demo.jpg?raw=true "Sails Auth Login Screen")
+![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
 
 # Requirements
 
