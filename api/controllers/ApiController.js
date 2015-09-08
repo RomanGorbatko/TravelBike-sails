@@ -22,9 +22,7 @@ module.exports = {
             }
 
             User.findOne({email: req.param('email')}, function (err, user) {
-
                 if (err) {
-                    console.log({message: err});
                     return res.json(500, {message: err})
                 }
                 if (!user) {
@@ -34,7 +32,61 @@ module.exports = {
                     return res.json(500, {message: 'Incorrect password.'});
                 }
 
-                res.json({result: 'Ok'});
+                res.json({user: user});
+            });
+        } else {
+            return res.json(500, {message: 'Server error.'});
+        }
+    },
+    signup: function(req, res) {
+        console.log("+ API.SIGNUP");
+        if (req.wantsJSON) {
+            if (!req.param('name') || !req.param('email') || !req.param('password')) {
+                return res.json(500, {message: 'empty signup data'})
+            }
+
+            User.findOne({email: req.param('email')}, function(err, user) {
+                if (err) {
+                    return res.json(500, {message: err})
+                }
+
+                if (user) {
+                    return res.json(500, {key: 'email'});
+                } else {
+                    var user = {
+                        uid: {local: true},
+                        name: req.param('name'),
+                        email: req.param('email'),
+                        password: User.generateHash(req.param('password'))
+                    };
+
+                    User.create(user).exec(function (err, model) {
+                        if (err) {
+                            return res.json(500, {message: err})
+                        }
+
+                        res.json({user: model});
+                    });
+                }
+            });
+        }
+    },
+    check_email: function(req, res) {
+        console.log("+ API.check_email");
+
+        if (!req.param('email')) {
+            return res.json(500, {message: 'empty signup data'});
+        } else {
+            User.findOne({email: req.param('email')}, function(err, user) {
+                if (err) {
+                    return res.json(500, {message: err})
+                }
+
+                if (user) {
+                    return res.json(500, {key: 'email'});
+                } else {
+                    res.json(true);
+                }
             });
         }
     }
