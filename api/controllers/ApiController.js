@@ -71,6 +71,7 @@ module.exports = {
             });
         }
     },
+
     check_email: function(req, res) {
         console.log("+ API.check_email");
 

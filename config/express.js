@@ -27,6 +27,7 @@ module.exports.http = {
                 consumerSecret: sails.config.application_auth.twitter.clientSecret,
                 callbackURL: sails.config.application_auth.twitter.callbackURL
             }, verifyHandler));
+
         }
 
         if (sails.config.application_auth.facebook.enable) {
