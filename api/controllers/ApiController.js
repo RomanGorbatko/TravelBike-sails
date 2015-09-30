@@ -7,14 +7,14 @@
 
 module.exports = {
 	index: function(req, res) {
-        console.log("+ API.INDEX", req.wantsJSON);
+        sails.log.info("+ API.INDEX", req.wantsJSON);
 
         if (req.wantsJSON) {
             res.json(req.params.all());
         }
     },
     login: function (req, res) {
-        console.log("+ API.LOGIN");
+        sails.log.info("+ API.LOGIN");
 
         if (req.wantsJSON) {
             if (!req.param('email') || !req.param('password')) {
@@ -39,7 +39,7 @@ module.exports = {
         }
     },
     signup: function(req, res) {
-        console.log("+ API.SIGNUP");
+        sails.log.info("+ API.SIGNUP");
         if (req.wantsJSON) {
             if (!req.param('name') || !req.param('email') || !req.param('password')) {
                 return res.json(500, {message: 'empty signup data'})
@@ -73,7 +73,7 @@ module.exports = {
     },
 
     check_email: function(req, res) {
-        console.log("+ API.check_email");
+        sails.log.info("+ API.check_email");
 
         if (!req.param('email')) {
             return res.json(500, {message: 'empty signup data'});
@@ -90,6 +90,14 @@ module.exports = {
                 }
             });
         }
+    },
+
+    add_new_route: function (req, res) {
+        sails.log.info("+ API.add_new_route ");
+        sails.log.debug(req.allParams());
+
+        res.json(true);
+
     }
 };
 

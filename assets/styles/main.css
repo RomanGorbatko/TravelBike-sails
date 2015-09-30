@@ -1,442 +1,417 @@
-/* ===============================================
-  General
-=============================================== */
+/*!
+ * Start Bootstrap - SB Admin Bootstrap Admin Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Global Styles */
 
 body {
-    font-family: 'Roboto', sans-serif;
+    margin-top: 100px;
+    background-color: #222;
 }
 
-.accountmenu-container {
-    position: relative;
+@media(min-width:768px) {
+    body {
+        margin-top: 50px;
+    }
+}
+
+#wrapper {
+    padding-left: 0;
+}
+
+#page-wrapper {
     width: 100%;
-    height: 75px;
-    margin-right: auto;
-    margin-left: auto;
-    border: 1px solid #bcbcbc;
+    padding: 0;
+    background-color: #fff;
 }
 
-.appname-text {
-    position: relative;
+.huge {
+    font-size: 50px;
+    line-height: normal;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 225px;
+    }
+
+    #page-wrapper {
+        padding: 10px;
+    }
+}
+
+/* Top Navigation */
+
+.top-nav {
+    padding: 0 15px;
+}
+
+.top-nav>li {
+    display: inline-block;
     float: left;
-    margin: 22px 0 0 10%;
-    color: rgb(0, 0, 0);
-    font-family: 'Roboto', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
 }
 
-.arrow-image {
-    display: block;
+.top-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+    color: #999;
+}
+
+.top-nav>li>a:hover,
+.top-nav>li>a:focus,
+.top-nav>.open>a,
+.top-nav>.open>a:hover,
+.top-nav>.open>a:focus {
+    color: #fff;
+    background-color: #000;
+}
+
+.top-nav>.open>.dropdown-menu {
+    float: left;
     position: absolute;
-    top: 24px;
-    right: 9.3352754237%;
-    z-index: 2;
-    width: 30px;
-    height: auto;
-    overflow: hidden;
+    margin-top: 0;
+    border: 1px solid rgba(0,0,0,.15);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
 }
 
-.fb-share {
+.top-nav>.open>.dropdown-menu>li>a {
+    white-space: normal;
+}
+
+ul.message-dropdown {
+    padding: 0;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+li.message-preview {
+    width: 275px;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+li.message-preview>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+li.message-footer {
+    margin: 5px 0;
+}
+
+ul.alert-dropdown {
+    width: 200px;
+}
+
+/* Side Navigation */
+
+@media(min-width:768px) {
+    .side-nav {
+        position: fixed;
+        top: 51px;
+        left: 225px;
+        width: 225px;
+        margin-left: -225px;
+        border: none;
+        border-radius: 0;
+        overflow-y: auto;
+        background-color: #222;
+        bottom: 0;
+        overflow-x: hidden;
+        padding-bottom: 40px;
+    }
+
+    .side-nav>li>a {
+        width: 225px;
+    }
+
+    .side-nav li a:hover,
+    .side-nav li a:focus {
+        outline: none;
+        background-color: #000 !important;
+    }
+}
+
+.side-nav>li>ul {
+    padding: 0;
+}
+
+.side-nav>li>ul>li>a {
     display: block;
-    position: relative;
-    float: left;
-    height: 42px;
-    border-radius: 3px;
-    background-color: #3b5998;
-    font-size: 16px;
-    text-align: center;
+    padding: 10px 15px 10px 38px;
     text-decoration: none;
-    line-height: 38px;
-    color: rgb(255, 255, 255);
-    z-index: 4;
-    width: 160px;
-    margin: 10px 0 0 1%;
-    text-decoration: none;
+    color: #999;
 }
 
-.fb-share:hover {
-    color: #aaa;
-    text-decoration: none;
+.side-nav>li>ul>li>a:hover {
+    color: #fff;
 }
 
-.twitter-share {
+/* Flot Chart Containers */
+
+.flot-chart {
     display: block;
-    position: relative;
-    float: left;
-    clear: both;
-    height: 42px;
-    border-radius: 3px;
-    background-color: #55acee;
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-    line-height: 38px;
-    color: rgb(255, 255, 255);
-    width: 150px;
-    margin: 10px 0 0 5%;
-    text-decoration: none;
+    height: 400px;
 }
 
-.twitter-share:hover {
-    color: #aaa;
-    text-decoration: none;
-}
-
-.sails-js-image {
-    display: block;
-    position: relative;
-    float: left;
-    clear: both;
-    width: 653px;
-    height: auto;
-    margin-left: 5%;
-    overflow: hidden;
-}
-
-.sails-js-image-2 {
-    margin-top: 50px;
-}
-
-.grass-image {
-    display: block;
-    position: fixed;
-    left: 0;
+.flot-chart-content {
     width: 100%;
-    height: auto;
-    overflow: hidden;
-    bottom: -1px;
+    height: 100%;
 }
 
-.btn-signin {
-    display: block;
-    float: right;
-    width: 108px;
-    height: 40px;
-    margin: 15px 9.9997399999% 0 0;
-    border: 1px solid rgb(198, 198, 198);
-    border-radius: 5px;
-    background-color: rgb(255, 255, 255);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 38px;
-    text-align: center;
-    color: rgb(141, 141, 141);
+/* Custom Colored Panels */
+
+.huge {
+    font-size: 40px;
 }
 
-.share-text {
-    float: left;
-    clear: both;
-    min-height: 23px;
-    color: rgb(101, 101, 101);
+.panel-green {
+    border-color: #5cb85c;
+}
+
+.panel-green > .panel-heading {
+    border-color: #5cb85c;
+    color: #fff;
+    background-color: #5cb85c;
+}
+
+.panel-green > a {
+    color: #5cb85c;
+}
+
+.panel-green > a:hover {
+    color: #3d8b3d;
+}
+
+.panel-red {
+    border-color: #d9534f;
+}
+
+.panel-red > .panel-heading {
+    border-color: #d9534f;
+    color: #fff;
+    background-color: #d9534f;
+}
+
+.panel-red > a {
+    color: #d9534f;
+}
+
+.panel-red > a:hover {
+    color: #b52b27;
+}
+
+.panel-yellow {
+    border-color: #f0ad4e;
+}
+
+.panel-yellow > .panel-heading {
+    border-color: #f0ad4e;
+    color: #fff;
+    background-color: #f0ad4e;
+}
+
+.panel-yellow > a {
+    color: #f0ad4e;
+}
+
+.panel-yellow > a:hover {
+    color: #df8a13;
+}
+
+#global-map {
+    min-width: inherit;
+    min-height: 500px;
+    height: 100%;
+}
+
+.timeline {
+    list-style: none;
+    padding: 20px 0 20px;
     position: relative;
-    z-index: 2;
-    width: 80%;
-    margin: 20px 0 0 5%;
-    font-weight: normal;
 }
 
-.config-text {
+.timeline:before {
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 3px;
+    background-color: #eeeeee;
+    left: 50%;
+    margin-left: -1.5px;
+}
+
+.timeline > li {
+    margin-bottom: 20px;
     position: relative;
-    float: left;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+    content: " ";
+    display: table;
+}
+
+.timeline > li:after {
     clear: both;
-    z-index: 1;
-    width: 80%;
-    min-height: 123px;
-    margin: 20px 0 0 5%;
-    font-size: 1em;
-    font-weight: 400;
-    line-height: 1.38;
-    color: rgb(99, 99, 99);
 }
 
-.config-text p {
-    margin-bottom: 1em;
+.timeline > li:before,
+.timeline > li:after {
+    content: " ";
+    display: table;
 }
 
-/* ===============================================
-  Homepage
-=============================================== */
+.timeline > li:after {
+    clear: both;
+}
 
-/* ===============================================
-  Login
-=============================================== */
-
-.auth-cont {
+.timeline > li > .timeline-panel {
+    width: 46%;
+    float: left;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+    padding: 20px;
     position: relative;
-    float: left;
-    width: 400px;
-    border: 1px solid rgb(200, 200, 200);
-    border-radius: 5px;
-    margin: 30px 10px;
+    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
 }
 
-.auth-cont .header {
-    float: left;
-    clear: both;
-    width: 100%;
-    font-size: 16px;
-    font-weight: 500;
-    color: rgb(0, 0, 0);
+.timeline > li > .timeline-panel:before {
+    position: absolute;
+    top: 26px;
+    right: -15px;
+    display: inline-block;
+    border-top: 15px solid transparent;
+    border-left: 15px solid #ccc;
+    border-right: 0 solid #ccc;
+    border-bottom: 15px solid transparent;
+    content: " ";
 }
 
-.auth-cont .subheader {
-    width: 100%;
-    min-height: 25px;
-    font-size: 1em;
-    color: rgb(108, 108, 108);
-    float: left;
-    clear: both;
+.timeline > li > .timeline-panel:after {
+    position: absolute;
+    top: 27px;
+    right: -14px;
+    display: inline-block;
+    border-top: 14px solid transparent;
+    border-left: 14px solid #fff;
+    border-right: 0 solid #fff;
+    border-bottom: 14px solid transparent;
+    content: " ";
 }
 
-.auth-cont .text {
-    text-align: center;
-}
-
-/* Email */
-.auth-cont .email-container {
-    float: left;
-    clear: both;
-    width: 73.5607675906%;
-    height: 36px;
-    margin-left: 13.21844%;
-    border: 1px solid #a8a8a8;
-    border-radius: 5px;
-    margin-top: 9px;
-}
-
-.auth-cont .email-field {
-    width: 85%;
-    display: block;
-    float: right;
-    height: 32px;
-    padding: 0 10px;
-    border-radius: 5px;
-    background-color: rgb(255, 255, 255);
-    font-size: 14px;
-    color: #a9a9a9;
-    outline: 0;
-    border: 0;
-}
-
-/* Password */
-.auth-cont .password-container {
-    float: left;
-    clear: both;
-    width: 73.5607675906%;
-    height: 36px;
-    margin: 9px 0 0 13.21844%;
-    border: 1px solid #a8a8a8;
-    border-radius: 5px;
-}
-
-.auth-cont .pass-field {
-    display: block;
-    float: right;
-    width: 85%;
-    height: 32px;
-    padding: 0 10px;
-    border-radius: 5px;
-    background-color: rgb(255, 255, 255);
-    font-size: 14px;
-    color: #a9a9a9;
-    outline: 0;
-    border: 0;
-}
-
-/* Username */
-.auth-cont .username-container {
-    float: left;
-    clear: both;
-    width: 73.3668341708%;
-    height: 41px;
-    margin: 14px 0 0 13.21844%;
-    border: 1px solid #a8a8a8;
-    border-radius: 5px;
-}
-
-.username-container .email-field {
-    width: 85.5172413793%;
-    margin-top: 4px;
-}
-
-/* Login Button */
-.auth-cont .login-btn {
-
-    float: left;
-    clear: both;
-
-    width: 73.5607675906%;
-    height: 46px;
-    margin: 14px 0 0 13.21844%;
-
-    border: 1px solid rgb(168, 168, 168);
-    border-radius: 5px;
-    background-color: rgb(255, 255, 255);
-
-    font-size: 14px;
-    line-height: 40px;
-    text-align: center;
-    color: #000;
-}
-
-/* SocialLogin Button */
-.auth-cont .sociallogin-btn {
-
-    float: left;
-    margin: 14px 0 0 13.21844%;
-
-    width: 73.5607675906%;
-    height: 46px;
-
-    border-radius: 5px;
-    background-color: #2593e8;
-
-    font-size: 14px;
-    line-height: 40px;
-    text-align: center;
-
-    color: rgb(255, 255, 255);
-}
-
-.auth-cont .sociallogin-facebook {
-    background-color: #3b5998;
-}
-
-.auth-cont .sociallogin-twitter {
-    background-color: #55acee;
-}
-
-.auth-cont .usersocial {
-    float: left;
-    clear: both;
-    width: 99.5735607675%;
-    min-height: 17px;
-    margin: 16px 0 0 0.212%;
-    font-size: 14px;
-    color: rgb(67, 67, 67);
-}
-
-.auth-cont .signup {
-    float: left;
-    min-height: 17px;
-    font-size: 14px;
-    color: rgb(67, 67, 67);
-    width: 99.1471215351%;
-    margin: 13px auto 5px;
-}
-
-/* Create account */
-.auth-cont .create-btn {
-    float: left;
-    width: 73.5607675906%;
-    height: 46px;
-    margin: 9px 0 0 13.21844%;
-    border-radius: 5px;
-    background-color: #2593e8;
-    font-size: 14px;
-    line-height: 40px;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    border: 0;
-}
-
-.auth-password {
-    padding-bottom: 30px;
-}
-
-/* ===============================================
-  Account
-=============================================== */
-
-.user-box {
-    position: relative;
-    float: right;
-    clear: both;
-    width: 120px;
-    height: 75px;
-    margin: -57px -1px 0 0;
-    border: 1px solid #bcbcbc;
-    background-color: #ffffff;
-}
-
-.user-circle {
-    float: right;
+.timeline > li > .timeline-badge {
+    color: #fff;
     width: 50px;
     height: 50px;
-    margin: 13px 39.75106% 0 0;
-    border-radius: 25px;
-    background-color: #2593e8;
-}
-
-.user-text {
-    width: 50px;
-    margin: 14px auto 0;
-    background-color: rgba(255, 255, 255, 0);
-    font-size: 1em;
-    font-weight: 400;
-    line-height: 1.38;
+    line-height: 50px;
+    font-size: 1.4em;
     text-align: center;
-    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    margin-left: -25px;
+    background-color: #999999;
+    z-index: 100;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
 }
 
-.dropdown-menu-account {
-    min-width: 100%;
-}
-
-/* ===============================================
-  Icons
-=============================================== */
-
-.close-icon {
-    display: block;
+.timeline > li.timeline-inverted > .timeline-panel {
     float: right;
-    width: 32px;
-    height: auto;
-    margin: 5px 5px 0 0;
-    overflow: hidden;
 }
 
-.password-icon {
-    display: block;
-    float: left;
-    width: 25px;
-    height: auto;
-    margin: 5px 0 0 3.05229%;
-    overflow: hidden;
+.timeline > li.timeline-inverted > .timeline-panel:before {
+    border-left-width: 0;
+    border-right-width: 15px;
+    left: -15px;
+    right: auto;
 }
 
-.person-icon {
-    display: block;
-    float: left;
-    width: 30px;
-    height: auto;
-    margin: 4px 0 0 2.85022%;
-    overflow: hidden;
+.timeline > li.timeline-inverted > .timeline-panel:after {
+    border-left-width: 0;
+    border-right-width: 14px;
+    left: -14px;
+    right: auto;
 }
 
-.email-icon {
-    display: block;
-    float: left;
-    width: 25px;
-    height: auto;
-    margin: 5px 0 0 3.3693399999%;
-    overflow: hidden;
+.timeline-badge.primary {
+    background-color: #2e6da4 !important;
 }
 
-.password-icon {
-    display: block;
-    float: left;
-    width: 25px;
-    height: auto;
-    margin: 5px 0 0 3.05229%;
-    overflow: hidden;
+.timeline-badge.success {
+    background-color: #3f903f !important;
 }
 
-.person-icon {
-    display: block;
-    float: left;
-    width: 30px;
-    height: auto;
-    margin: 4px 0 0 2.85022%;
-    overflow: hidden;
+.timeline-badge.warning {
+    background-color: #f0ad4e !important;
+}
+
+.timeline-badge.danger {
+    background-color: #d9534f !important;
+}
+
+.timeline-badge.info {
+    background-color: #5bc0de !important;
+}
+
+.timeline-title {
+    margin-top: 0;
+    color: inherit;
+}
+
+.timeline-body > p,
+.timeline-body > ul {
+    margin-bottom: 0;
+}
+
+.timeline-body > p + p {
+    margin-top: 5px;
+}
+
+@media (max-width: 767px) {
+    ul.timeline:before {
+        left: 40px;
+    }
+
+    ul.timeline > li > .timeline-panel {
+        width: calc(100% - 90px);
+        width: -moz-calc(100% - 90px);
+        width: -webkit-calc(100% - 90px);
+    }
+
+    ul.timeline > li > .timeline-badge {
+        left: 15px;
+        margin-left: 0;
+        top: 16px;
+    }
+
+    ul.timeline > li > .timeline-panel {
+        float: right;
+    }
+
+    ul.timeline > li > .timeline-panel:before {
+        border-left-width: 0;
+        border-right-width: 15px;
+        left: -15px;
+        right: auto;
+    }
+
+    ul.timeline > li > .timeline-panel:after {
+        border-left-width: 0;
+        border-right-width: 14px;
+        left: -14px;
+        right: auto;
+    }
 }

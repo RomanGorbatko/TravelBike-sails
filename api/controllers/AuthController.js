@@ -25,7 +25,7 @@ module.exports = {
 
         if (formUsername && formPassword) {
 
-            console.log("+ AUTH.LOGIN username=", formUsername, "password=", formPassword);
+            sails.log.info("+ AUTH.LOGIN username=", formUsername, "password=", formPassword);
 
             passport.authenticate('local', {
                 successRedirect: '/account',
@@ -33,13 +33,13 @@ module.exports = {
                 failureFlash: false
             }, function (err, user) {
 
-                console.log("AUTH Local Response error=", err, "user=", user);
+                sails.log.error("AUTH Local Response error=", err, "user=", user);
 
                 if (user) {
                     req.logIn(user, function (err) {
 
                         if (err) {
-                            console.log("AUTH Error", err);
+                            sails.log.error("AUTH Error", err);
                             return res.view('500');
                         }
 
@@ -54,7 +54,7 @@ module.exports = {
         }
         else {
 
-            console.log("+ AUTH.LOGIN (empty credentials)");
+            sails.log.info("+ AUTH.LOGIN (empty credentials)");
             return res.view({
                 enableLocalAuth: enableLocalAuth,
                 enableTwitterAuth: enableTwitterAuth,
@@ -71,7 +71,7 @@ module.exports = {
         var fPassword = req.param("password");
 
         if (fFullName && fEmail && fPassword) {
-            console.log("+ AUTH.SIGNUP", fFullName, fEmail, fPassword);
+            sails.log.info("+ AUTH.SIGNUP", fFullName, fEmail, fPassword);
 
             var user = {
                 uid: {local: true},
@@ -81,13 +81,13 @@ module.exports = {
             };
 
             User.create(user).exec(function (err, model) {
-                console.log("USER updated");
+                sails.log.info("USER updated");
             });
 
             return res.redirect("/auth/login");
         } else {
 
-            console.log("+ AUTH.SIGNUP (new user)");
+            sails.log.info("+ AUTH.SIGNUP (new user)");
             return res.view();
         }
     },
@@ -95,7 +95,7 @@ module.exports = {
     // Logout screen
     logout: function (req, res) {
 
-        console.log("+ AUTH.LOGOUT");
+        sails.log.info("+ AUTH.LOGOUT");
 
         req.logout();
         return res.redirect('/');
@@ -104,16 +104,16 @@ module.exports = {
     // Twitter login screen
     twitter: function (req, res) {
 
-        console.log("+ AUTH.TWITTER");
+        sails.log.info("+ AUTH.TWITTER");
         passport.authenticate('twitter', {failureRedirect: '/login'}, function (err, user) {
 
-            console.log("Twitter Auth Response error=", err, "user=", user);
+            sails.log.error("Twitter Auth Response error=", err, "user=", user);
 
             if (user) {
                 req.logIn(user, function (err) {
 
                     if (err) {
-                        console.log("Auth Error", err);
+                        sails.log.error("Auth Error", err);
                         return res.view('500');
                     }
 
@@ -135,7 +135,7 @@ module.exports = {
             scope: sails.config.application_auth.facebook.scope
         }, function (err, user) {
 
-            console.log("Facebook Auth Response error=", err, "user=", user);
+            sails.log.info("Facebook Auth Response error=", err, "user=", user);
 
             if (user) {
                 req.logIn(user, function (err) {

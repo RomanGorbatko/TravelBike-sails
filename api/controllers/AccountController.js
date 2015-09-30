@@ -7,49 +7,20 @@
 
 module.exports = {
 
-    accountLabel: 'U',
+    accountLabel: '',
     picture: '/images/arrow-icon.png',
 
     // Account main page
     index: function (req, res) {
+        sails.log.info("+ ACCOUNT.INDEX");
 
-        console.log("+ ACCOUNT.INDEX");
-
-        var isUserAuth = false;
-
-        if (req.user) {
-            isUserAuth = true;
-
-            var basicUserData = UserServices.getBasicData(req.user);
-
-            return res.view({
-                accountLabel: basicUserData.accountLabel,
-                accountPicture: basicUserData.picture,
-                isUserAuth: isUserAuth
-            });
-        }
+        return res.view();
     },
 
     password: function(req, res) {
-        console.log("+ ACCOUNT.PASSWORD");
+        sails.log.info("+ ACCOUNT.PASSWORD");
 
-        var _this = this;
-
-        if (req.user) {
-
-            if (req.user.firstname && req.user.lastname) {
-                _this.accountLabel = req.user.firstname[0];
-                _this.accountLabel += req.user.lastname[0];
-            } else {
-                if (req.user.name && req.user.name.length >= 2)
-                    _this.accountLabel = req.user.name.substring(0, 2).toUpperCase();
-            }
-        }
-        return res.view({
-            accountLabel: _this.accountLabel,
-            accountPicture: req.user.picture ? req.user.picture : _this.picture,
-            accountPassword: req.user.password ? true : false
-        });
+        return res.view();
     },
 
     passwordChange: function(req, res) {
@@ -61,7 +32,7 @@ module.exports = {
 
                 if (err) {
                     // handle error here- e.g. `res.serverError(err);`
-                    console.log('Change password error: ' + err);
+                    sails.log.error('Change password error: ' + err);
                     return res.view('500');
                 }
 

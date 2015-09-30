@@ -13,7 +13,7 @@ module.exports.http = {
 
     customMiddleware: function (app) {
 
-        console.log('Init Express midleware');
+        sails.log.info('Init Express midleware');
 
         if (sails.config.application_auth.local.enable) {
 
@@ -103,7 +103,7 @@ var verifyHandler = function (token, tokenSecret, profile, done) {
 
                 User.update({email: user.email}, data).exec(function(err, updated) {
                     if (err) {
-                        console.log('Change password error: ' + err);
+                        sails.log.error('Change password error: ' + err);
                         return done(err);
                     }
 
@@ -116,14 +116,16 @@ var verifyHandler = function (token, tokenSecret, profile, done) {
                     name: profile.displayName
                 };
 
+                var splitName = _.compact(data.name.split(' '));
+
                 if (profile.emails && profile.emails[0] && profile.emails[0].value) {
                     data.email = profile.emails[0].value;
                 }
-                if (profile.name && profile.name.givenName) {
-                    data.firstname = profile.name.givenName;
+                if (splitName[0]) {
+                    data.firstname = splitName[0];
                 }
-                if (profile.name && profile.name.familyName) {
-                    data.lastname = profile.name.familyName;
+                if (splitName[1]) {
+                    data.lastname = splitName[1];
                 }
 
                 User.processUserAvatar(data.email, function(pictureUrl) {
